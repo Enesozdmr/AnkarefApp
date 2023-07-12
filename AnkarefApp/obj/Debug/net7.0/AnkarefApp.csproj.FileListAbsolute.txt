@@ -29,3 +29,14 @@ C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\obj\Debug\net7.0\refint\Ank
 C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\obj\Debug\net7.0\AnkarefApp.pdb
 C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\obj\Debug\net7.0\AnkarefApp.genruntimeconfig.cache
 C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\obj\Debug\net7.0\ref\AnkarefApp.dll
+C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\bin\Debug\net7.0\Npgsql.dll
+C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\obj\Debug\net7.0\AnkarefApp.csproj.CopyComplete
+C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\bin\Debug\net7.0\Humanizer.dll
+C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

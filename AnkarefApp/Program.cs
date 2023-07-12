@@ -1,8 +1,16 @@
+using AnkarefApp.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddDbContext<AllDbContext>(options =>
+    options.UseNpgsql("Server=localhost;Database=ankaref;Username=postgres;Password=admin;"));
+
 
 builder.Services.AddSession(options =>
 {
