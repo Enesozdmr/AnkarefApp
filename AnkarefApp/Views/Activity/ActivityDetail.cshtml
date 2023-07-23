@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Activity Detail";
+}
+
+<h1>Activity Detail</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="input-title">Title</label>
+                <input type="text" class="form-control" id="input-title" name="title" value="@Model.Title" readonly>
+            </div>
+            <div class="form-group">
+                <label for="input-description">Description</label>
+                <textarea class="form-control" name="description" id="input-description" rows="4" readonly>@Model.Description</textarea>
+            </div>
+            <div class="form-group">
+                <label for="input-date">Date</label>
+                <input type="date" class="form-control" id="input-date" name="date" value="@Model.Date.ToString("yyyy-MM-dd")" readonly>
+            </div>
+            <div class="form-group">
+                <label for="input-category">Category</label>
+                <input type="text" class="form-control" id="input-category" name="category" value="@ViewBag.CategoryName" readonly>
+            </div>
+            <div class="form-group">
+                <label for="input-users">Users</label>
+                @foreach (var user in ViewBag.Users)
+                {
+                    <input type="text" class="form-control" id="input-users" name="users" value="@user.Email" readonly>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-right">
+        <a href="/Activity/Activity" class="btn btn-orange">Back to Activities</a>
+    </div>
+</div>
+
+<style>
+    /* Your existing styles here */
+</style>

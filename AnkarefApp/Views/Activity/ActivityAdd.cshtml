@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Add Activity";
+}
+
+<h1>Add Activity</h1>
+
+<div class="container">
+    <form asp-action="AddActivity" method="post" class="cf">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="input-title">Title</label>
+                    <input type="text" class="form-control" id="input-title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="input-description">Description</label>
+                    <textarea class="form-control" name="description" id="input-description" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="input-date">Date</label>
+                    <input type="date" class="form-control" id="input-date" name="date" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="input-category">Category</label>
+                    <select class="form-control" id="input-category" name="category" required>
+                        <option value="">Select a category</option>
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <option value="@category.Value">@category.Text</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="input-users">Users</label>
+                    <select class="form-control" id="input-users" name="users" multiple required>
+                        @foreach (var user in ViewBag.Users)
+                        {
+                            <option value="@user.Value">@user.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group text-right">
+            <button type="submit" class="btn btn-orange">Add Activity</button>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Your existing styles here */
+</style>

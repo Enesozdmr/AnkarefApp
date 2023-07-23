@@ -1,39 +1,27 @@
-﻿using System.Diagnostics;
-using AnkarefApp.Data;
+﻿using AnkarefApp.Data;
 using Microsoft.AspNetCore.Mvc;
-using AnkarefApp.Models;
 
 namespace AnkarefApp.Controllers;
 
-public class HomeController : Controller
+public class UserController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
     private readonly AllDbContext _context;
 
-    public HomeController(ILogger<HomeController> logger, AllDbContext context)
+    private readonly ILogger<UserController> _logger;
+
+    public UserController(ILogger<UserController> logger, AllDbContext context)
     {
         _logger = logger;
         _context = context;
     }
-    
-    public string Job()
-    {
-        return "başarıyla giriş yapıldı";
-    }
 
-    // LOGIN START ---------------------------------------------------------
-    // GET
     public IActionResult Index()
     {
-        if (HttpContext.Session.GetString("UserId") != null)
-        {
-            return RedirectToAction("Job", "Home");
-        }
-        
+        if (HttpContext.Session.GetString("UserId") != null) return RedirectToAction("Activity", "Activity");
+
         return View();
     }
-    
-    // POST
+
     [HttpPost]
     public IActionResult Login(string inputEmail, string inputPassword)
     {
@@ -42,11 +30,12 @@ public class HomeController : Controller
         if (user != null)
         {
             HttpContext.Session.SetString("UserId", inputEmail);
-            return RedirectToAction("Job", "Home");
+            
+            return RedirectToAction("Activity", "Activity");
         }
 
         ViewBag.ErrorMessage = "Invalid username or password.";
-        
+
         return View("Index");
     }
 
@@ -55,20 +44,13 @@ public class HomeController : Controller
         HttpContext.Session.Clear();
         return RedirectToAction("Index");
     }
-    
-    // LOGIN END--------------------------------------------------
-    
-    // REGISTER START ----------------------------------------------
-    
+
     [HttpGet]
     public IActionResult Register()
     {
-        if (HttpContext.Session.GetString("UserId") != null)
-        {
-            return RedirectToAction("Job", "Home");
-        }
-        
-        return View();
+        if (HttpContext.Session.GetString("UserId") != null) return RedirectToAction("Activity", "Activity");
+
+        return Index();
     }
 
     [HttpPost]
@@ -80,28 +62,31 @@ public class HomeController : Controller
             return View();
         }
 
+        if (password != confirmPassword)
+        {
+            ViewBag.ErrorMessage = "Passwords do not match.";
+            return View();
+        }
+
         var user = new User
         {
             Email = email,
-            Password = password,
+            Password = password
         };
 
         try
         {
             _context.Users.Add(user);
             _context.SaveChanges();
-        } catch (Exception e) {
+            ViewBag.SuccessMessage = "Registration successful! Thank you for signing up.";
+        }
+        catch (Exception e)
+        {
             ViewBag.ErrorMessage = e;
             return View();
         }
 
-        return RedirectToAction("Index", "Home");
-    }
 
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return RedirectToAction("Index", "User");
     }
 }

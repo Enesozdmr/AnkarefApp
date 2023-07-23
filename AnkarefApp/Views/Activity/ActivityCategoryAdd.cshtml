@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Add Activity Category";
+}
+
+<h1>Add Activity</h1>
+
+<div class="container">
+    <form asp-action="ActivityCategoryAdd" method="post" class="cf">
+        <div class="row">
+            @if (!string.IsNullOrEmpty(ViewBag.Message))
+            {
+                <div class="alert alert-success">@ViewBag.Message</div>
+            }
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="category-name">Title</label>
+                    <input type="text" class="form-control" id="category-name" name="categoryName" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group text-right">
+            <button type="submit" class="btn btn-orange">Add Activity Category</button>
+        </div>
+    </form>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .cf {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
+
+    .btn-orange {
+        background-color: #ff9800;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-orange:hover {
+        background-color: #e68a00;
+    }
+</style>
