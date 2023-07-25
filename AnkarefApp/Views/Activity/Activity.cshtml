@@ -65,7 +65,7 @@
             color: #6c757d;
         }
 
-        /* New style for the "Add Activity" button */
+        
         .add-activity-button {
             position: fixed;
             bottom: 20px;
@@ -77,6 +77,11 @@
             font-size: 14px;
             cursor: pointer;
         }
+        .text-wrap {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
     </style>
 </head>
 <body>
@@ -98,29 +103,31 @@
                         <!-- Add href to activity detail -->
                         <a href="/Activity/ActivityDetail/@activity.Id" class="btn btn-orange">
 
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-4 date-holder text-right">
-                                <div class="icon">
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                                <div class="date">
-                                    <span>@activity.Date.ToString("hh:mm tt")</span><br>
-                                    <span class="text-info">@activity.Date.ToString("dd/MM/yyyy")</span>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-4 date-holder text-right">
+                                        <div class="icon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                        <div class="date">
+                                            <span>@activity.Date.ToString("hh:mm tt")</span><br>
+                                            <span class="text-info">@activity.Date.ToString("dd/MM/yyyy")</span>
+                                        </div>
+                                    </div>
+                                   <div class="col-8 content text-center">
+                                       <h5>@activity.Title</h5>
+                                       <p class="text-wrap">@activity.Description</p>
+                                   </div>
                                 </div>
                             </div>
-                            <div class="col-8 content">
-                                <h5>@activity.Title</h5>
-                                <p>@activity.Description</p>
-                            </div>
-                        </div>
-                    </div>
-                    </a>
+                        </a>
+                     
+                        <div style="margin-bottom: 50px;"></div>
                     }
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        @*<div class="col-lg-6">
             <div class="recent-activities">
                 <div class="card-header">
                     <h3 class="h4">Upcoming Events</h3>
@@ -129,12 +136,12 @@
 
                 </div>
             </div>
-        </div>
+        </div>*@
     </div>
 </div>
 
 
-<!-- "Add Activity" button -->
+
 <div class="add-activity-button" onclick="location.href='@Url.Action("ActivityAdd", "Activity")'">
     Add Activity
 </div>

@@ -95,7 +95,8 @@ public IActionResult AddActivity(string title, string description, DateTime date
             ActivityCategory = activityCategory,
             ActivityCategoryId = activityCategory.Id,
             CreatingUser = user,
-            CreatingUserId = user.Id
+            CreatingUserId = user.Id,
+            CreatedAt = DateTime.Now,
         };
 
         _context.Activities.Add(activity);
@@ -116,10 +117,8 @@ public IActionResult AddActivity(string title, string description, DateTime date
     }
     catch (Exception e)
     {
-        // Handle any exceptions that occur during the saving process
         TempData["Message"] = "Error adding activity. Please try again.";
-        // You can log the exception details for debugging purposes
-        // Redirect back to the AddActivity page with a message
+        
         return RedirectToAction("ActivityAdd");
     }
 }

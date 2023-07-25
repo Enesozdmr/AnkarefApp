@@ -32,6 +32,14 @@
                         }
                     </select>
                 </div>
+                <div style="margin-bottom: 10px;"></div>
+                <a href="@Url.Action("ActivityCategoryAdd", "Activity")" class="btn btn-orange add-category-button">
+                    <span>Add Category</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="category-icon">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                </a>
+
                 <div class="form-group">
                     <label for="input-users">Users</label>
                     <select class="form-control" id="input-users" name="users" multiple required>
@@ -43,12 +51,68 @@
                 </div>
             </div>
         </div>
+                <div style="margin-bottom: 10px;"></div>
+        
         <div class="form-group text-right">
             <button type="submit" class="btn btn-orange">Add Activity</button>
         </div>
     </form>
 </div>
 
+@*
+<div href="@Url.Action("ActivityCategoryAdd", "Activity")" class="form-group text-right">
+    <button type="submit" class="btn btn-orange">Add Activity Category</button>
+</div>*@
+
+@*<a href="@Url.Action("ActivityCategoryAdd", "Activity")" class="btn btn-orange add-category-button">
+    <span>Add Category</span>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="category-icon">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+    </svg>
+</a>*@
+
 <style>
-    /* Your existing styles here */
+    
+    
+    .btn-orange {
+        background-color: #ff9800;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px; /* Adjust the margin to match your design */
+    }
+    
+    .add-category-button {
+        display: inline-block;
+        background-color: #ff9800;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        position: relative;
+    }
+    
+    .add-category-button span {
+        display: inline-block;
+        vertical-align: middle;
+        padding-right: 8px;
+    }
+    
+    .category-icon {
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        fill: #ffffff;
+    }
+    
+    .add-category-button:hover {
+        background-color: #e68a00;
+    }
+
 </style>
