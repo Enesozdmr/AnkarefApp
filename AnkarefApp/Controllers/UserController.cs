@@ -30,7 +30,7 @@ public class UserController : Controller
         if (user != null)
         {
             HttpContext.Session.SetString("UserId", inputEmail);
-            
+
             return RedirectToAction("Activity", "Activity");
         }
 

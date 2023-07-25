@@ -6,7 +6,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6"> <div class="form-group">
+        <div class="col-md-6">
+            <div class="form-group">
                 <label for="input-category">Category</label>
                 <input type="text" class="form-control" id="input-category" name="category" value="@ViewBag.CategoryName" readonly>
             </div>
@@ -22,7 +23,7 @@
                 <label for="input-date">Date</label>
                 <input type="date" class="form-control" id="input-date" name="date" value="@Model.Date.ToString("yyyy-MM-dd")" readonly>
             </div>
-            
+
             <div class="form-group">
                 <label for="input-users">Responsible Users</label>
                 @foreach (var user in ViewBag.Users)
@@ -32,8 +33,8 @@
             </div>
         </div>
     </div>
-                <div style="margin-bottom: 10px;"></div>
-    
+    <div style="margin-bottom: 10px;"></div>
+
     <div class="form-group text-right">
         <a href="/Activity/Activity" class="btn btn-orange">Back to Activities</a>
     </div>

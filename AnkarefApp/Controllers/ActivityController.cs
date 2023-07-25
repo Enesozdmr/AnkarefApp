@@ -17,10 +17,7 @@ public class ActivityController : Controller
 
     public IActionResult Activity()
     {
-        if (TempData["Message"] != "")
-        {
-            ViewBag.Message = TempData["Message"];
-        }
+        if (TempData["Message"] != "") ViewBag.Message = TempData["Message"];
 
         var activities = _context.Activities.ToList();
 
@@ -44,113 +41,110 @@ public class ActivityController : Controller
     }
 
     [HttpPost]
-public IActionResult AddActivity(string title, string description, DateTime date, Guid category, List<Guid> users)
-{
-    var selectedCategory = _context.ActivityCategories.FirstOrDefault(c => c.Id == category);
-    if (selectedCategory == null)
+    public IActionResult AddActivity(string title, string description, DateTime date, Guid category, List<Guid> users)
     {
-        TempData["Message"] = "Invalid category selected.";
-        return RedirectToAction("ActivityAdd");
-    }
-
-    if (users == null || users.Count == 0)
-    {
-        TempData["Message"] = "Please select at least one user.";
-        return RedirectToAction("ActivityAdd");
-    }
-    
-    // Select user from database with email stored in session variable from _context
-    var userId = _context.Users.FirstOrDefault(u => u.Email == HttpContext.Session.GetString("UserId"));
-
-    if (!Guid.TryParse(userId.Id.ToString(), out var creatingUserId))
-    {
-        TempData["Message"] = "User ID is invalid.";
-        return RedirectToAction("Activity");
-    }
-
-    var user = _context.Users.FirstOrDefault(u => u.Id == creatingUserId);
-
-    if (user == null)
-    {
-        TempData["Message"] = "User does not exist.";
-        return RedirectToAction("Activity");
-    }
-    
-    var activityCategory = _context.ActivityCategories.FirstOrDefault(c => c.Id == category);
-
-    if (activityCategory == null)
-    {
-        TempData["Message"] = "Selected category does not exist.";
-        return RedirectToAction("Activity");
-    }
-
-    try
-    {
-        var activity = new ActivityTable
+        var selectedCategory = _context.ActivityCategories.FirstOrDefault(c => c.Id == category);
+        if (selectedCategory == null)
         {
-            Id = Guid.NewGuid(),
-            Title = title,
-            Description = description,
-            Date = date,
-            ActivityCategory = activityCategory,
-            ActivityCategoryId = activityCategory.Id,
-            CreatingUser = user,
-            CreatingUserId = user.Id,
-            CreatedAt = DateTime.Now,
-        };
+            TempData["Message"] = "Invalid category selected.";
+            return RedirectToAction("ActivityAdd");
+        }
 
-        _context.Activities.Add(activity);
-        _context.SaveChanges();
-
-        var activityUserMappings = users.Select(userId => new ActivityParticipant()
+        if (users == null || users.Count == 0)
         {
-            ActivityId = activity.Id,
-            UserId = userId
-        }).ToList();
+            TempData["Message"] = "Please select at least one user.";
+            return RedirectToAction("ActivityAdd");
+        }
 
-        _context.ActivityParticipants.AddRange(activityUserMappings);
-        _context.SaveChanges();
+        // Select user from database with email stored in session variable from _context
+        var userId = _context.Users.FirstOrDefault(u => u.Email == HttpContext.Session.GetString("UserId"));
 
-        TempData["Message"] = "Activity added successfully!";
+        if (!Guid.TryParse(userId.Id.ToString(), out var creatingUserId))
+        {
+            TempData["Message"] = "User ID is invalid.";
+            return RedirectToAction("Activity");
+        }
 
-        return RedirectToAction("ActivityDetail", new { id = activity.Id });
+        var user = _context.Users.FirstOrDefault(u => u.Id == creatingUserId);
+
+        if (user == null)
+        {
+            TempData["Message"] = "User does not exist.";
+            return RedirectToAction("Activity");
+        }
+
+        var activityCategory = _context.ActivityCategories.FirstOrDefault(c => c.Id == category);
+
+        if (activityCategory == null)
+        {
+            TempData["Message"] = "Selected category does not exist.";
+            return RedirectToAction("Activity");
+        }
+
+        try
+        {
+            var activity = new ActivityTable
+            {
+                Id = Guid.NewGuid(),
+                Title = title,
+                Description = description,
+                Date = date,
+                ActivityCategory = activityCategory,
+                ActivityCategoryId = activityCategory.Id,
+                CreatingUser = user,
+                CreatingUserId = user.Id,
+                CreatedAt = DateTime.Now
+            };
+
+            _context.Activities.Add(activity);
+            _context.SaveChanges();
+
+            var activityUserMappings = users.Select(userId => new ActivityParticipant
+            {
+                ActivityId = activity.Id,
+                UserId = userId
+            }).ToList();
+
+            _context.ActivityParticipants.AddRange(activityUserMappings);
+            _context.SaveChanges();
+
+            TempData["Message"] = "Activity added successfully!";
+
+            return RedirectToAction("ActivityDetail", new { id = activity.Id });
+        }
+        catch (Exception e)
+        {
+            TempData["Message"] = "Error adding activity. Please try again.";
+
+            return RedirectToAction("ActivityAdd");
+        }
     }
-    catch (Exception e)
+
+    public IActionResult ActivityDetail(Guid id)
     {
-        TempData["Message"] = "Error adding activity. Please try again.";
-        
-        return RedirectToAction("ActivityAdd");
+        var activity = _context.Activities.FirstOrDefault(a => a.Id == id);
+
+        if (activity == null)
+        {
+            TempData["Message"] = "Activity not found.";
+            return RedirectToAction("Activity");
+        }
+
+        var categoryName = _context.ActivityCategories.FirstOrDefault(c => c.Id == activity.ActivityCategoryId)?.Name;
+
+        var userIds = _context.ActivityParticipants.Where(au => au.ActivityId == id).Select(au => au.UserId);
+        var users = _context.Users.Where(u => userIds.Contains(u.Id)).ToList();
+
+        ViewBag.CategoryName = categoryName;
+        ViewBag.Users = users;
+        return View(activity);
     }
-}
-
-public IActionResult ActivityDetail(Guid id)
-{
-    var activity = _context.Activities.FirstOrDefault(a => a.Id == id);
-
-    if (activity == null)
-    {
-        TempData["Message"] = "Activity not found.";
-        return RedirectToAction("Activity");
-    }
-
-    var categoryName = _context.ActivityCategories.FirstOrDefault(c => c.Id == activity.ActivityCategoryId)?.Name;
-
-    var userIds = _context.ActivityParticipants.Where(au => au.ActivityId == id).Select(au => au.UserId);
-    var users = _context.Users.Where(u => userIds.Contains(u.Id)).ToList();
-
-    ViewBag.CategoryName = categoryName;
-    ViewBag.Users = users;
-    return View(activity);
-}
 
 
     [HttpGet]
     public IActionResult ActivityCategoryAdd()
     {
-        if (TempData["Message"] != "")
-        {
-            ViewBag.Message = TempData["Message"];
-        }
+        if (TempData["Message"] != "") ViewBag.Message = TempData["Message"];
 
         return View();
     }
@@ -175,7 +169,7 @@ public IActionResult ActivityDetail(Guid id)
         {
             TempData["Message"] = $"{categoryName} can not be added!";
         }
-        
+
         return RedirectToAction("ActivityCategoryAdd", "Activity");
     }
 }
