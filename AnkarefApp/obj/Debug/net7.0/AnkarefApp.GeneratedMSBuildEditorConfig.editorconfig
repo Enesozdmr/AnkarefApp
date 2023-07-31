@@ -9,57 +9,61 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AnkarefApp
 build_property.RootNamespace = AnkarefApp
-build_property.ProjectDir = C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp\
+build_property.ProjectDir = C:\Users\eneso\Documents\GitHub\AnkarefApp\AnkarefApp\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\eneso\Desktop\Ankaref\AnkarefApp\AnkarefApp
+build_property.MSBuildProjectDirectory = C:\Users\eneso\Documents\GitHub\AnkarefApp\AnkarefApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/eneso/Desktop/Ankaref/AnkarefApp/AnkarefApp/Views/Activity/Activity.cshtml]
+[C:/Users/eneso/Documents/GitHub/AnkarefApp/AnkarefApp/Views/Activity/Activity.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdHlcQWN0aXZpdHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eneso/Desktop/Ankaref/AnkarefApp/AnkarefApp/Views/Activity/ActivityAdd.cshtml]
+[C:/Users/eneso/Documents/GitHub/AnkarefApp/AnkarefApp/Views/Activity/ActivityAdd.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdHlcQWN0aXZpdHlBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eneso/Desktop/Ankaref/AnkarefApp/AnkarefApp/Views/Activity/ActivityCategoryAdd.cshtml]
+[C:/Users/eneso/Documents/GitHub/AnkarefApp/AnkarefApp/Views/Activity/ActivityCategoryAdd.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdHlcQWN0aXZpdHlDYXRlZ29yeUFkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eneso/Desktop/Ankaref/AnkarefApp/AnkarefApp/Views/Activity/ActivityDetail.cshtml]
+[C:/Users/eneso/Documents/GitHub/AnkarefApp/AnkarefApp/Views/Activity/ActivityDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdHlcQWN0aXZpdHlEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eneso/Desktop/Ankaref/AnkarefApp/AnkarefApp/Views/Activity/SampleActivity.cshtml]
+[C:/Users/eneso/Documents/GitHub/AnkarefApp/AnkarefApp/Views/Activity/Notifications.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdHlcTm90aWZpY2F0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eneso/Documents/GitHub/AnkarefApp/AnkarefApp/Views/Activity/SampleActivity.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdHlcU2FtcGxlQWN0aXZpdHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eneso/Desktop/Ankaref/AnkarefApp/AnkarefApp/Views/Shared/Error.cshtml]
+[C:/Users/eneso/Documents/GitHub/AnkarefApp/AnkarefApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eneso/Desktop/Ankaref/AnkarefApp/AnkarefApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/eneso/Documents/GitHub/AnkarefApp/AnkarefApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eneso/Desktop/Ankaref/AnkarefApp/AnkarefApp/Views/User/Index.cshtml]
+[C:/Users/eneso/Documents/GitHub/AnkarefApp/AnkarefApp/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eneso/Desktop/Ankaref/AnkarefApp/AnkarefApp/Views/User/Register.cshtml]
+[C:/Users/eneso/Documents/GitHub/AnkarefApp/AnkarefApp/Views/User/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eneso/Desktop/Ankaref/AnkarefApp/AnkarefApp/Views/_ViewImports.cshtml]
+[C:/Users/eneso/Documents/GitHub/AnkarefApp/AnkarefApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eneso/Desktop/Ankaref/AnkarefApp/AnkarefApp/Views/_ViewStart.cshtml]
+[C:/Users/eneso/Documents/GitHub/AnkarefApp/AnkarefApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eneso/Desktop/Ankaref/AnkarefApp/AnkarefApp/Views/Shared/_Layout.cshtml]
+[C:/Users/eneso/Documents/GitHub/AnkarefApp/AnkarefApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-n3vb4ck0hg

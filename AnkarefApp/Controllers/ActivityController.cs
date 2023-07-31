@@ -1,4 +1,5 @@
-﻿using AnkarefApp.Data;
+﻿using System.Runtime.InteropServices.JavaScript;
+using AnkarefApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -172,4 +173,30 @@ public class ActivityController : Controller
 
         return RedirectToAction("ActivityCategoryAdd", "Activity");
     }
+    
+    
+    [HttpPost]
+    public IActionResult UpdateActivityStatus(List<Guid> activityIds)
+    {
+        var userIdString = HttpContext.Session.GetString("UserId");
+        if (activityIds != null && activityIds.Any())
+        {
+            var activitiesToUpdate = _context.ActivityParticipants
+                .Where(ap => activityIds.Contains(ap.ActivityId) && ap.UserId.ToString() == userIdString)
+                .ToList();
+
+            foreach (var activityParticipant in activitiesToUpdate)
+            {
+                activityParticipant.IsAccepted = true;
+            }
+            
+            _context.SaveChanges();
+        }
+        TempData["Message"] = "Activity status updated successfully!";
+        return View("Activity", _context.Activities.ToList());
+
+        /*return RedirectToAction("Activity","Activity");*/
+    }
+
+    
 }

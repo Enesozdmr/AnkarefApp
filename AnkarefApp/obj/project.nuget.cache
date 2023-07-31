@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iIfXLSJuXsVQbd0vnXx6yi2brb7NuNxFwVWWwngpwOsoBYfAesxDgR0aA0JOYWWNREhndF+ZzQ4JZQnFo4VXTQ==",
+  "dgSpecHash": "OSmXfd42TOT7XEEJ4Zx+/vHNgeZ+dUeJSX2frKVOlFjvxOpWaea9Et5stjoqeKsEnOL3UJJg7MoAxY20Hq6pmg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\eneso\\Desktop\\Ankaref\\AnkarefApp\\AnkarefApp\\AnkarefApp.csproj",
+  "projectFilePath": "C:\\Users\\eneso\\Documents\\GitHub\\AnkarefApp\\AnkarefApp\\AnkarefApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eneso\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\eneso\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.9\\microsoft.entityframeworkcore.7.0.9.nupkg.sha512",

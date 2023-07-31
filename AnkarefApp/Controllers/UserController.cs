@@ -22,6 +22,7 @@ public class UserController : Controller
         return View();
     }
 
+  
     [HttpPost]
     public IActionResult Login(string inputEmail, string inputPassword)
     {
@@ -30,8 +31,11 @@ public class UserController : Controller
         if (user != null)
         {
             HttpContext.Session.SetString("UserId", inputEmail);
+            return View("~/Views/Activity/Notifications.cshtml", _context.Activities.ToList());
 
+            /*
             return RedirectToAction("Activity", "Activity");
+        */
         }
 
         ViewBag.ErrorMessage = "Invalid username or password.";

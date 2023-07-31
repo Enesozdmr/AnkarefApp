@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eneso\\Desktop\\Ankaref\\AnkarefApp\\AnkarefApp\\AnkarefApp.csproj": {}
+    "C:\\Users\\eneso\\Documents\\GitHub\\AnkarefApp\\AnkarefApp\\AnkarefApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eneso\\Desktop\\Ankaref\\AnkarefApp\\AnkarefApp\\AnkarefApp.csproj": {
+    "C:\\Users\\eneso\\Documents\\GitHub\\AnkarefApp\\AnkarefApp\\AnkarefApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eneso\\Desktop\\Ankaref\\AnkarefApp\\AnkarefApp\\AnkarefApp.csproj",
+        "projectUniqueName": "C:\\Users\\eneso\\Documents\\GitHub\\AnkarefApp\\AnkarefApp\\AnkarefApp.csproj",
         "projectName": "AnkarefApp",
-        "projectPath": "C:\\Users\\eneso\\Desktop\\Ankaref\\AnkarefApp\\AnkarefApp\\AnkarefApp.csproj",
+        "projectPath": "C:\\Users\\eneso\\Documents\\GitHub\\AnkarefApp\\AnkarefApp\\AnkarefApp.csproj",
         "packagesPath": "C:\\Users\\eneso\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eneso\\Desktop\\Ankaref\\AnkarefApp\\AnkarefApp\\obj\\",
+        "outputPath": "C:\\Users\\eneso\\Documents\\GitHub\\AnkarefApp\\AnkarefApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

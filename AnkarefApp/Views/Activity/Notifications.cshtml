@@ -1,0 +1,22 @@
+﻿@model List<AnkarefApp.Data.ActivityTable>
+
+<div class="container">
+    <div class="recent-activities">
+        <h3>Notifications</h3>
+        <form method="post" asp-controller="Activity" asp-action="UpdateActivityStatus" >
+            @foreach (var notification in Model)
+            {
+                <div class="notification-item">
+                    <input type="checkbox" name="activityIds" value="@notification.Id" />
+                    <p>You have an activity assigned to you:</p>
+                    <h5>@notification.Title</h5>
+                    <p>Category: @notification.ActivityCategory?.Name</p>
+                    <p>Description: @notification.Description</p>
+                    <p>Date: @notification.Date.ToString("dd/MM/yyyy")</p>
+                    <a href="@Url.Action("ActivityDetail", "Activity", new { id = notification.Id })" class="btn btn-orange">View Activity</a>
+                </div>
+            }
+            <button type="submit" class="btn btn-primary">Mark as Accepted</button>
+        </form>
+    </div>
+</div>
