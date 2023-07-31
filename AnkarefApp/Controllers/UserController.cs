@@ -30,7 +30,7 @@ public class UserController : Controller
 
         if (user != null)
         {
-            HttpContext.Session.SetString("UserId", inputEmail);
+            HttpContext.Session.SetString("UserId", user.Id.ToString());
             return View("~/Views/Activity/Notifications.cshtml", _context.Activities.ToList());
 
             /*

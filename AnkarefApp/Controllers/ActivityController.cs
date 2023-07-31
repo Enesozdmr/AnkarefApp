@@ -178,15 +178,16 @@ public class ActivityController : Controller
     [HttpPost]
     public IActionResult UpdateActivityStatus(List<Guid> activityIds)
     {
+        Console.WriteLine("ActivityIds: " + activityIds);
         var userIdString = HttpContext.Session.GetString("UserId");
         if (activityIds != null && activityIds.Any())
         {
             var activitiesToUpdate = _context.ActivityParticipants
                 .Where(ap => activityIds.Contains(ap.ActivityId) && ap.UserId.ToString() == userIdString)
                 .ToList();
-
             foreach (var activityParticipant in activitiesToUpdate)
             {
+                Console.WriteLine("activityParticipant: " + activityParticipant.ActivityId);
                 activityParticipant.IsAccepted = true;
             }
             
