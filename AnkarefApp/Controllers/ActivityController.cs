@@ -18,10 +18,12 @@ public class ActivityController : Controller
 
     public IActionResult Activity()
     {
+        if (HttpContext.Session.GetString("UserId") == null) return RedirectToAction("Index", "User");
+       
         if (TempData["Message"] != "") ViewBag.Message = TempData["Message"];
-        
+
         var activities = _context.Activities.ToList();
-         return View(activities);
+        return View(activities);
     }
 
     [HttpGet]
@@ -56,7 +58,7 @@ public class ActivityController : Controller
             return RedirectToAction("ActivityAdd");
         }
 
-        // Select user from database with email stored in session variable from _context
+
         var userId = _context.Users.FirstOrDefault(u => u.Id.ToString() == HttpContext.Session.GetString("UserId"));
 
         if (!Guid.TryParse(userId.Id.ToString(), out var creatingUserId))
@@ -172,8 +174,8 @@ public class ActivityController : Controller
 
         return RedirectToAction("ActivityCategoryAdd", "Activity");
     }
-    
-    
+
+
     [HttpPost]
     public IActionResult UpdateActivityStatus(List<Guid> activityIds)
     {
@@ -189,15 +191,14 @@ public class ActivityController : Controller
                 Console.WriteLine("activityParticipant: " + activityParticipant.ActivityId);
                 activityParticipant.IsAccepted = true;
             }
-            
+
             _context.SaveChanges();
         }
+
         TempData["Message"] = "Activity status updated successfully!";
         var _activities = _context.Activities.ToList();
         return View("Activity", _activities);
 
         /*return RedirectToAction("Activity","Activity");*/
     }
-
-    
 }

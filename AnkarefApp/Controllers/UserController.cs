@@ -22,7 +22,7 @@ public class UserController : Controller
         return View();
     }
 
-  
+
     [HttpPost]
     public IActionResult Login(string inputEmail, string inputPassword)
     {
@@ -33,13 +33,10 @@ public class UserController : Controller
             var userIdString = user.Id.ToString();
             HttpContext.Session.SetString("UserId", userIdString);
             var acts = _context.ActivityParticipants
-                .Where(ap => (ap.UserId.ToString() == userIdString) && (ap.IsAccepted == false))
+                .Where(ap => ap.UserId.ToString() == userIdString && ap.IsAccepted == false)
                 .ToList();
-            List<string> activID = new List<string>();
-            foreach (var activityParticipant in acts)
-            {
-                activID.Add(activityParticipant.ActivityId.ToString());
-            }
+            var activID = new List<string>();
+            foreach (var activityParticipant in acts) activID.Add(activityParticipant.ActivityId.ToString());
             var _activities = _context.Activities.Where(ac => activID.Contains(ac.Id.ToString())).ToList();
 
             return View("~/Views/Activity/Notifications.cshtml", _activities);

@@ -1,18 +1,91 @@
 ﻿@model List<AnkarefApp.Data.ActivityTable>
 
+<style>
+    /* Custom styles for checkboxes */
+    .notification-item input[type="checkbox"] {
+        display: none;
+    }
+
+    .notification-item label {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        margin-right: 10px;
+        vertical-align: middle;
+        position: relative;
+        top: 3px;
+        cursor: pointer;
+    }
+
+    .notification-item input[type="checkbox"]:checked + label {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    /* Custom styles for buttons */
+    .btn {
+        background-color: orange;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+        background-color: #ff7f00;
+    }
+
+    /* Notification item styles */
+    .notification-item {
+        border: 2px solid #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 20px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .notification-item h5 {
+        font-size: 20px;
+        color: #343a40;
+        margin-bottom: 5px;
+    }
+
+    .notification-item p {
+        font-size: 14px;
+        color: #6c757d;
+        margin-bottom: 10px;
+    }
+
+    .notification-item a.btn-orange {
+        margin-top: 10px;
+    }
+</style>
+
 <div class="container">
     <div class="recent-activities">
         <h3>Notifications</h3>
-        <form method="post" asp-controller="Activity" asp-action="UpdateActivityStatus" >
-            @foreach (var notification in Model)
+        <form method="post" asp-controller="Activity" asp-action="UpdateActivityStatus">
+            @foreach (var notification in Model.OrderBy(a => a.Date))
             {
                 <div class="notification-item">
-                    <input type="checkbox" name="activityIds" value="@notification.Id" />
-                    <p>You have an activity assigned to you:</p>
+                    <input type="checkbox" name="activityIds" value="@notification.Id" id="@notification.Id"/>
+                    <label for="@notification.Id"></label>
                     <h5>@notification.Title</h5>
-                    <p>Category: @notification.ActivityCategory?.Name</p>
-                    <p>Description: @notification.Description</p>
-                    <p>Date: @notification.Date.ToString("dd/MM/yyyy")</p>
+                    <p>
+                        <strong>Category:</strong> @notification.ActivityCategory?.Name
+                    </p>
+                    <p>
+                        <strong>Description:</strong> @notification.Description
+                    </p>
+                    <p>
+                        <strong>Date:</strong> @notification.Date.ToString("dd/MM/yyyy")
+                    </p>
                     <a href="@Url.Action("ActivityDetail", "Activity", new { id = notification.Id })" class="btn btn-orange">View Activity</a>
                 </div>
             }

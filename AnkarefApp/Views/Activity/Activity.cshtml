@@ -116,12 +116,12 @@
         @*@{
            var sortedModel = Model.OrderBy(activity => activity.Date).ToList();
        }*@
-        @foreach (var activity in Model.OrderBy(a => a.Date))  
+        @foreach (var activity in Model.OrderBy(a => a.Date))
         {
         @*
         @foreach (var activity  in Model)
         {*@
-           
+
             <a href="/Activity/ActivityDetail/@activity.Id" class="btn btn-orange">
                 <div class="item">
                     <div class="row">
