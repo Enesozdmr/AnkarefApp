@@ -1,5 +1,6 @@
 ﻿@using AnkarefApp.Data
 @model List<ActivityTable>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,18 +10,14 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: arial,serif;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
         }
 
         .container {
-            justify-content: center;
-            display: flex;
-            flex-wrap: wrap;  
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
         }
 
         .recent-activities {
@@ -35,15 +32,14 @@
 
         .recent-activities .item {
             display: flex;
-            align-items: center; 
+            align-items: center;
             flex: 1 1 300px;
-            margin-left:auto;
-            margin-right:auto;
             margin-bottom: 15px;
             padding: 10px;
             background-color: #fff;
             border-radius: 5px;
-            }
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
         .recent-activities .item .date-holder {
             flex: 1;
@@ -73,25 +69,23 @@
             font-size: 14px;
             color: #6c757d;
             word-wrap: break-word;
-            max-height: 100px; 
-            overflow: auto; 
+            max-height: 100px;
+            overflow: auto;
         }
 
-      .add-activity-button {
-           position: fixed;
-                  bottom: 22px; 
-                  right: 61px; 
-                  background-color: orange;
-                  color: white;
-                  padding: 17px 36px;
-                  border-radius: 5px;
-                  font-size: 14px;
-                  cursor: pointer;
-                  z-index: 3;
-          
-      }
+        .add-activity-button {
+            position: fixed;
+            bottom: 22px;
+            right: 61px;
+            background-color: orange;
+            color: #fff;
+            padding: 17px 36px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 3;
+        }
 
-       
         .item-content {
             margin: auto;
             max-width: 500px;
@@ -107,48 +101,73 @@
         .item-content p {
             text-align: center;
         }
+
+      
+        .recent-activities a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .recent-activities a:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .date-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-left: auto;
+            color: #6c757d;
+        }
+
+        .date-container .icon {
+            font-size: 24px;
+         
+        }
+
+        .date-container .date {
+            margin-top: 5px;
+   
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="recent-activities">
         <h3>Events</h3>
-        @*@{
-           var sortedModel = Model.OrderBy(activity => activity.Date).ToList();
-       }*@
         @foreach (var activity in Model.OrderBy(a => a.Date))
         {
-        @*
-        @foreach (var activity  in Model)
-        {*@
-
-            <a href="/Activity/ActivityDetail/@activity.Id" class="btn btn-orange">
+            <a href="/Activity/ActivityDetail/@activity.Id">
                 <div class="item">
                     <div class="row">
                         <div class="col-8 content">
                             <div class="item-content">
                                 <h5>@activity.Title</h5>
+                                @*
+                                     <p>Category: @activity.ActivityCategory?.Name</p>
+                                    *@
                                 <p>@activity.Description</p>
                             </div>
                         </div>
-                        <div class="col-4 date-holder text-right">
-                            <div class="icon">
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div class="date">
-                                @*<span>@activity.Date.ToString("hh:mm tt")</span><br>*@
-                                <span class="text-info">@activity.Date.ToString("dd/MM/yyyy")</span>
+                        <div class="col-4 date-holder">
+                            <!-- Date and icon container -->
+                            <div class="date-container">
+                                <div class="icon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div class="date">
+                                    <span class="text-info">@activity.Date.ToString("dd/MM/yyyy")</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </a>
-
             <div style="margin-bottom: 30px;"></div>
         }
     </div>
 </div>
-
 
 <div class="add-activity-button" onclick="location.href='@Url.Action("ActivityAdd", "Activity")'">
     Add Activity

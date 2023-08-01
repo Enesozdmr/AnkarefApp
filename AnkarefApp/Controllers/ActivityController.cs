@@ -19,7 +19,7 @@ public class ActivityController : Controller
     public IActionResult Activity()
     {
         if (HttpContext.Session.GetString("UserId") == null) return RedirectToAction("Index", "User");
-       
+
         if (TempData["Message"] != "") ViewBag.Message = TempData["Message"];
 
         var activities = _context.Activities.ToList();
