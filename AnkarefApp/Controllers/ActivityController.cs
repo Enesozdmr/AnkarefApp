@@ -139,10 +139,7 @@ public class ActivityController : Controller
 
         ViewBag.CategoryName = categoryName;
         ViewBag.Users = users;
-        if (TempData["WarningMessage"] != null)
-        {
-            ViewBag.WarningMessage = TempData["WarningMessage"];
-        }
+        if (TempData["WarningMessage"] != null) ViewBag.WarningMessage = TempData["WarningMessage"];
         return View(activity);
     }
 
@@ -205,6 +202,7 @@ public class ActivityController : Controller
 
         /*return RedirectToAction("Activity","Activity");*/
     }
+
     [HttpPost]
     public IActionResult DeleteActivity(Guid id)
     {
@@ -216,20 +214,17 @@ public class ActivityController : Controller
             return RedirectToAction("Activity");
         }
 
-       
-       
-           
-            var activityParticipants = _context.ActivityParticipants.Where(ap => ap.ActivityId == id).ToList();
-            _context.ActivityParticipants.RemoveRange(activityParticipants);
 
-     
-            _context.Activities.Remove(activity);
-            _context.SaveChanges();
+        var activityParticipants = _context.ActivityParticipants.Where(ap => ap.ActivityId == id).ToList();
+        _context.ActivityParticipants.RemoveRange(activityParticipants);
 
-            TempData["Message"] = "Activity deleted successfully!";
-     
-       
+
+        _context.Activities.Remove(activity);
+        _context.SaveChanges();
+
+        TempData["Message"] = "Activity deleted successfully!";
+
+
         return RedirectToAction("Activity");
     }
-
 }
