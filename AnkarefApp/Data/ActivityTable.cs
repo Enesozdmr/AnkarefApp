@@ -18,4 +18,5 @@ public class ActivityTable
 
     [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
     public DateTime CreatedAt { get; set; }
+    
 }

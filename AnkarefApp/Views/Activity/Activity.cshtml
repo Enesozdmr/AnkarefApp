@@ -31,9 +31,9 @@
         }
 
         .recent-activities .item {
-            display: flex;
+            display: grid; /* Use grid layout */
+            grid-template-columns: 3fr 1fr; /* Divide into two columns */
             align-items: center;
-            flex: 1 1 300px;
             margin-bottom: 15px;
             padding: 10px;
             background-color: #fff;
@@ -42,9 +42,7 @@
         }
 
         .recent-activities .item .date-holder {
-            flex: 1;
             text-align: right;
-            padding-right: 15px;
             color: #6c757d;
         }
 
@@ -54,7 +52,6 @@
         }
 
         .recent-activities .item .content {
-            flex: 3;
             padding-left: 20px;
         }
 
@@ -117,18 +114,14 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            margin-left: auto;
-            color: #6c757d;
         }
 
         .date-container .icon {
             font-size: 24px;
-         
         }
 
         .date-container .date {
             margin-top: 5px;
-   
         }
     </style>
 </head>
@@ -140,25 +133,19 @@
         {
             <a href="/Activity/ActivityDetail/@activity.Id">
                 <div class="item">
-                    <div class="row">
-                        <div class="col-8 content">
-                            <div class="item-content">
-                                <h5>@activity.Title</h5>
-                                @*
-                                     <p>Category: @activity.ActivityCategory?.Name</p>
-                                    *@
-                                <p>@activity.Description</p>
-                            </div>
+                    <div class="content">
+                        <div class="item-content">
+                            <h5>@activity.Title</h5>
+                            <p>@activity.Description</p>
                         </div>
-                        <div class="col-4 date-holder">
-                            <!-- Date and icon container -->
-                            <div class="date-container">
-                                <div class="icon">
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                                <div class="date">
-                                    <span class="text-info">@activity.Date.ToString("dd/MM/yyyy")</span>
-                                </div>
+                    </div>
+                    <div class="date-holder">
+                        <div class="date-container">
+                            <div class="icon">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                            <div class="date">
+                                <span class="text-info">@activity.Date.ToString("dd/MM/yyyy")</span>
                             </div>
                         </div>
                     </div>
